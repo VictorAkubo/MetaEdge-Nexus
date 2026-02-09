@@ -95,11 +95,14 @@
     </style>
 </head>
 <body class="font-sans antialiased">
-
-    <div class="bg-accent text-white text-center py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] px-4">
-        ⚡ FREE AI AUDIT & 30% OFF INTEGRATION — <button onclick="showBooking()" class="underline ml-1">Claim Now</button>
-    </div>
-
+    
+<div id="promo-banner" class="relative bg-accent text-white text-center py-2.5 text-[10px] sm:text-xs font-black uppercase tracking-[0.3em] px-10">
+    <span>⚡ FREE AI AUDIT & 30% OFF INTEGRATION — <button onclick="showBooking()" class="underline ml-1">Claim Now</button></span>
+    
+    <button onclick="dismissBanner()" class="absolute right-4 top-1/2 -translate-y-1/2 hover:opacity-70 transition-opacity">
+        <i class="fa-solid fa-xmark text-sm"></i>
+    </button>
+</div>
     <nav class="sticky top-0 z-[60] nav-blur border-b border-white/5">
         <div class="max-w-7xl mx-auto px-6 py-5 flex justify-between items-center">
             <a href="#" onclick="showHome()" class="flex items-center space-x-2">
@@ -276,54 +279,111 @@
         </section>
     </main>
 
-    <section id="booking-view" class="hidden min-h-screen pt-32 px-6 pb-24">
-        <div class="max-w-6xl mx-auto">
-            <button onclick="showHome()" class="mb-16 text-gray-500 hover:text-white uppercase text-[10px] font-black tracking-[0.4em] flex items-center gap-2">
-                <i class="fa-solid fa-arrow-left"></i> Return Home
-            </button>
-            
-            <div class="grid lg:grid-cols-2 gap-20">
-                <div>
-                    <h2 class="text-6xl font-black mb-8 uppercase tracking-tighter leading-none">The Future <br/> Starts <span class="text-accent">Here.</span></h2>
-                    <p class="text-gray-400 text-lg mb-12">Connect with MetaEdge AI on your preferred platform or leave your details below.</p>
-                    
-                    <div class="flex flex-wrap gap-8 mb-16">
-                        <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-youtube"></i></a>
-                        <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-x-twitter"></i></a>
-                        <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-facebook-f"></i></a>
-                        <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
-                        <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-instagram"></i></a>
-                        <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-tiktok"></i></a>
+<section id="booking-view" class="hidden min-h-screen pt-25 px-6 pb-24 bg-black">
+    <div class="max-w-7xl mx-auto">
+        <button onclick="showHome()" class="mb-16 text-gray-500 hover:text-white uppercase text-[10px] font-black tracking-[0.4em] flex items-center gap-2 transition-colors">
+            <i class="fa-solid fa-arrow-left"></i> Return Home
+        </button>
+        
+        <div class="grid lg:grid-cols-2 gap-20">
+            <div data-aos="fade-right">
+                <h2 class="text-6xl font-black mb-8 uppercase tracking-tighter leading-none">
+                    The Future <br/> Starts <span class="text-accent">Here.</span>
+                </h2>
+                <p class="text-gray-400 text-lg mb-12 font-medium max-w-md">
+                    Schedule a 15-minute discovery call. We'll discuss your platform, automation needs, and provide a live demo of your future AI.
+                </p>
+                
+                <div class="space-y-8 mb-16">
+                    <div class="flex items-center gap-6 group">
+                        <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:border-accent transition-all">
+                            <i class="fa-solid fa-envelope"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-black uppercase text-[10px] tracking-widest mb-1">Email Us</h4>
+                            <p class="text-gray-400 font-bold">hello@metaedge.ai</p>
+                        </div>
+                    </div>
+                    <div class="flex items-center gap-6 group">
+                        <div class="w-12 h-12 rounded-full bg-white/5 border border-white/10 flex items-center justify-center text-accent group-hover:border-accent transition-all">
+                            <i class="fa-solid fa-location-dot"></i>
+                        </div>
+                        <div>
+                            <h4 class="text-white font-black uppercase text-[10px] tracking-widest mb-1">HQ</h4>
+                            <p class="text-gray-400 font-bold">San Francisco, CA</p>
+                        </div>
                     </div>
                 </div>
 
-                <div class="premium-card p-10 sm:p-16 rounded-[4rem]">
-                    <form class="space-y-8" onsubmit="handleForm(event)">
-                        <input type="text" placeholder="Full Name" required class="w-full bg-transparent border-b border-white/10 py-5 text-white focus:border-accent outline-none font-bold">
-                        <input type="email" placeholder="Work Email" required class="w-full bg-transparent border-b border-white/10 py-5 text-white focus:border-accent outline-none font-bold">
-                        <div class="relative">
-                            <label class="block text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-4">Integration Goal</label>
-                            <select required class="w-full bg-transparent border-b border-white/10 py-5 text-white focus:border-accent outline-none appearance-none cursor-pointer font-bold">
-                                <option value="" disabled selected class="bg-black">Choose a service...</option>
-                                <option value="receptionist" class="bg-black">24/7 AI Receptionist</option>
-                                <option value="lead" class="bg-black">Lead Qualification Bot</option>
-                                <option value="support" class="bg-black">Customer Support Agent</option>
-                            </select>
-                            <i class="fa-solid fa-chevron-down absolute right-2 bottom-6 text-accent"></i>
-                        </div>
-                        <button type="submit" class="w-full bg-accent text-white py-7 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all">
-                            Secure My Consultation
-                        </button>
-                    </form>
+                <div class="flex flex-wrap gap-8">
+                    <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-youtube"></i></a>
+                    <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-twitter"></i></a>
+                    <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-facebook-f"></i></a>
+                    <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
+                    <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-instagram"></i></a>
+                    <a href="#" class="text-2xl social-btn"><i class="fa-brands fa-tiktok"></i></a>
                 </div>
             </div>
+
+            <div class="premium-card p-10 sm:p-16 rounded-[4rem] relative" data-aos="fade-left">
+                <form class="space-y-8" id="metaedge-form" onsubmit="handleForm(event)">
+                    <div class="space-y-1">
+                        <label class="block text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">Full Name</label>
+                        <input type="text" placeholder="John Doe" required class="w-full bg-transparent border-b border-white/10 py-4 text-white focus:border-accent outline-none font-bold text-lg transition-colors">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="block text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">Work Email</label>
+                        <input type="email" placeholder="john@company.com" required class="w-full bg-transparent border-b border-white/10 py-4 text-white focus:border-accent outline-none font-bold text-lg transition-colors">
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="block text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">Company Website</label>
+                        <input type="url" placeholder="https://" required class="w-full bg-transparent border-b border-white/10 py-4 text-white focus:border-accent outline-none font-bold text-lg transition-colors">
+                    </div>
+
+                    <div class="custom-select-container relative">
+                        <label class="block text-[10px] font-black uppercase tracking-[0.3em] text-gray-600 mb-2">Integration Goal</label>
+                        <div class="select-trigger cursor-pointer flex justify-between items-center border-b border-white/10 py-4" onclick="event.stopPropagation(); toggleDropdown()">
+                            <span id="selected-value" class="text-gray-400 font-bold text-lg">Choose a service...</span>
+                            <i class="fa-solid fa-chevron-down text-accent text-xs"></i>
+                        </div>
+                        
+                        <div class="custom-options hidden absolute top-full left-0 right-0 bg-[#0a0a0a] border border-accent rounded-2xl mt-2 z-50 overflow-hidden shadow-2xl" id="custom-options">
+                            <div class="option-item p-5 flex justify-between items-center hover:bg-white/5 cursor-pointer" onclick="selectOption('24/7 AI Receptionist')">
+                                <span class="font-bold">24/7 AI Receptionist</span>
+                                <div class="radio-circle w-5 h-5 border-2 border-white/20 rounded-full"></div>
+                            </div>
+                            <div class="option-item p-5 flex justify-between items-center hover:bg-white/5 cursor-pointer" onclick="selectOption('Lead Qualification Bot')">
+                                <span class="font-bold">Lead Qualification Bot</span>
+                                <div class="radio-circle w-5 h-5 border-2 border-white/20 rounded-full"></div>
+                            </div>
+                            <div class="option-item p-5 flex justify-between items-center hover:bg-white/5 cursor-pointer" onclick="selectOption('Customer Support Agent')">
+                                <span class="font-bold">Customer Support Agent</span>
+                                <div class="radio-circle w-5 h-5 border-2 border-white/20 rounded-full"></div>
+                            </div>
+                        </div>
+                        <input type="hidden" id="service-input" required>
+                    </div>
+
+                    <div class="space-y-1">
+                        <label class="block text-[10px] font-black uppercase tracking-[0.3em] text-gray-600">Preferred Date</label>
+                        <input type="date" required class="w-full bg-transparent border-b border-white/10 py-4 text-white focus:border-accent outline-none font-bold text-lg [color-scheme:dark]">
+                    </div>
+
+                    <button type="submit" id="submit-btn" class="w-full bg-accent text-white py-7 rounded-2xl font-black uppercase tracking-widest text-xs hover:bg-white hover:text-black transition-all active:scale-95 shadow-xl shadow-accent/20">
+                        Confirm Booking Now
+                    </button>
+                </form>
+            </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <footer class="py-24 border-t border-white/5 text-center px-6">
         <div class="flex justify-center flex-wrap gap-8 mb-12">
             <a href="#" class="text-xl social-btn"><i class="fa-brands fa-youtube"></i></a>
-            <a href="#" class="text-xl social-btn"><i class="fa-brands fa-x-twitter"></i></a>
+            <a href="#" class="text-xl social-btn"><i class="fa-brands fa-twitter"></i></a>
             <a href="#" class="text-xl social-btn"><i class="fa-brands fa-facebook-f"></i></a>
             <a href="#" class="text-xl social-btn"><i class="fa-brands fa-linkedin-in"></i></a>
             <a href="#" class="text-xl social-btn"><i class="fa-brands fa-instagram"></i></a>
@@ -376,6 +436,44 @@
             document.getElementById('success-modal').classList.add('hidden'); 
             showHome(); 
         }
+    function toggleDropdown() {
+    const options = document.getElementById('custom-options');
+    options.classList.toggle('hidden'); // We use Tailwind's hidden class now
+}
+
+function selectOption(val) {
+    const display = document.getElementById('selected-value');
+    display.innerText = val;
+    display.classList.remove('text-gray-400');
+    display.classList.add('text-white');
+    document.getElementById('service-input').value = val;
+    
+    // Toggle the 'selected' checkmarks
+    document.querySelectorAll('.option-item').forEach(item => {
+        item.classList.remove('selected');
+        if(item.innerText.includes(val)) item.classList.add('selected');
+    });
+    
+    toggleDropdown();
+}
+    // Function to hide banner and save to local storage
+function dismissBanner() {
+    const banner = document.getElementById('promo-banner');
+    banner.style.display = 'none';
+    
+    // Set a key in localStorage
+    localStorage.setItem('metaedge_banner_dismissed', 'true');
+}
+
+// Check on page load if the banner should be hidden
+document.addEventListener('DOMContentLoaded', function() {
+    if (localStorage.getItem('metaedge_banner_dismissed') === 'true') {
+        const banner = document.getElementById('promo-banner');
+        if (banner) {
+            banner.style.display = 'none';
+        }
+    }
+});
     </script>
 </body>
 </html>
